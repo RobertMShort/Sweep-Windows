@@ -24,5 +24,6 @@ Instructions:
 Simply run batch script in command prompt and enter network portion of desired IP address when prompted. 
 Files will save to whatever location you run the batch script from. 
 For private/internal class C networks.
+MUST HAVE NMAP INSTALLED.
 
 More to come...
