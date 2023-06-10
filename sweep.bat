@@ -11,7 +11,7 @@ setlocal
 	echo.
 	echo.
 
-	set /p "ip=Enter IP: "
+	set /p "ip=Enter Network IP: "
 
 	break>ping.txt
 
@@ -37,6 +37,28 @@ setlocal
 	echo ----------Active Ports----------
 
 	type ports.txt
+
+	set /p "scan=Run scan on individual target?: y/n to quit: "
+
+	if "!scan!"=="n" (
+		exit /B
+	)
+ 
+	if "!scan!"=="y" (
+		set /p "scanip=Enter IP: "
+		set /p "scantype=Enter 's' for Service Scan, 'a' for Aggressive Scan: "
+	)
+
+	if "!scantype!"=="s" (
+		nmap -sV -v !scanip! > servicescan.txt
+		type servicescan.txt
+	) 
+
+	if "!scantype!"=="a" (
+		nmap -A -v !scanip! > aggressivescan.txt
+		type aggressivescan.txt
+	)
+
 
 endlocal	
 goto :eof
